@@ -2,6 +2,7 @@ import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";
 import { useWindowSize } from "react-use";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useRect } from "../../utils/useRect";
 import logo from "../../assets/logo.svg";
 import gsap from "gsap";
 
@@ -9,7 +10,10 @@ import "./index.scss";
 
 export default function Page1() {
   const wrap = useRef<HTMLDivElement>(null);
+  const list = useRef<HTMLDivElement>(null);
   const { width, height } = useWindowSize();
+
+  const { width: listWidth, height: listHeight } = useRect(list);
 
   /* useEffect(() => {
     const rate = 1920 / 1080;
@@ -34,6 +38,7 @@ export default function Page1() {
         stagger: 0.1,
         scrollTrigger: {
           // target: document.getElementById("page1Content") as HTMLElement,
+          markers: true,
           start: "top center", // when the top of the trigger hits the center of the viewport
           scrub: true,
         },
@@ -42,19 +47,19 @@ export default function Page1() {
       let panels = gsap.utils.toArray(".page") as any[];
 
       let index = 0;
-      function goToSection(_index: any) {
-        if (_index === index) return;
+      function goToSection(i: any) {
+        if (i === index) return;
         gsap.to(window, {
-          scrollTo: { y: panels[_index], autoKill: false },
+          scrollTo: { y: panels[i], autoKill: false },
           onComplete: () => {
-            index = _index;
+            index = i;
           },
         });
       }
 
       ScrollTrigger.create({
         trigger: panels[1],
-        markers: true,
+        // markers: true,
         onEnter: () => {
           goToSection(1);
         },
@@ -63,7 +68,7 @@ export default function Page1() {
       ScrollTrigger.create({
         trigger: panels[0],
         start: "bottom bottom",
-        markers: true,
+        // markers: true,
         onEnterBack: (self) => {
           goToSection(0);
         },
@@ -85,13 +90,13 @@ export default function Page1() {
           </video> */}
           </div>
 
-          <div className="list text-white">
+          <div ref={list} className="list text-white">
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
           </div>
         </div>
-        <div className="placeholder"></div>
+        <div className="placeholder" style={{ height: listHeight }}></div>
       </div>
 
       <div className="page page2">
