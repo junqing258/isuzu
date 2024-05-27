@@ -1,53 +1,71 @@
-.page1 {
-  position: relative;
+.page {
+  min-height: 100vh;
+}
 
-  .pg-container {
+.page1 {
+  background-color: #282c34 ;
+  .content {
     position: sticky;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+  }
+  .bg {
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
 
-    .bg {
+    video {
+      object-fit: fill;
+      max-width: unset;
+      height: unset;
       position: absolute;
-      z-index: -1;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      position: absolute;
-
-      video {
-        object-fit: fill;
-        max-width: unset;
-        height: unset;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-    }
-
-    .content {
-      position: absolute;
-      z-index: 10;
-      width: 100vw;
-      height: 100vh;
-      top: 0;
-      left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .starwars {
-      font-size: 36px;
-      line-height: 1.5em;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 
-  .placeholder {
+  .list {
+    position: absolute;
+    z-index: 10;
+    width: 100vw;
     height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .starwars {
+    font-size: 36px;
+    line-height: 1.5em;
+  }
+}
+
+.placeholder {
+  height: 100vh;
+}
+
+.page2 {
+  background-color: #1a1c1e;
+  width: 100vw;
+  height: 100vh;
+
+  .header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
   }
 }

@@ -5,10 +5,13 @@ import App from "./App";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollToPlugin);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
