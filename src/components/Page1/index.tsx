@@ -39,15 +39,13 @@ export default function Page1() {
           item.style.opacity = `${1 - Math.abs(i - progress * items.length)}`;
           item.style.transform = `scale(${
             1 - Math.abs(i - progress * items.length) * 0.2
-          }) translateY(${(i - progress * items.length) * 100}%)`;
+          }) translateY(${(i - progress * items.length) * 200}%)`;
         });
       }
       updateProgress(0);
 
       ScrollTrigger.create({
-        trigger: ".starwars-container",
-        start: `top ${top}`,
-        // markers: true,
+        trigger: ".content",
         onUpdate: (self) => {
           updateProgress(self.progress);
         },
@@ -98,8 +96,18 @@ export default function Page1() {
               ></source>
             </video>
           </div>
-          {/* <div style={{ height: top }}></div> */}
+
           <div ref={content} className="starwars-container text-white">
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
@@ -110,6 +118,7 @@ export default function Page1() {
             <p className="starwars">Vite + React + TailwindCSS</p>
           </div>
         </div>
+
         <div style={{ height: contentHeight }}></div>
       </div>
 

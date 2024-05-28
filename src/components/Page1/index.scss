@@ -1,8 +1,5 @@
 @import "../../assets/scss/responsive.scss";
 
-.page {
-  min-height: 100vh;
-}
 
 .page1 {
   background-color: #282c34;
@@ -13,12 +10,10 @@
     left: 0;
     height: 100vh;
     overflow: hidden;
+    box-sizing: content-box;
     .bg {
-      // position: absolute;
       z-index: -1;
       width: 100vw;
-      height: 100vh;
-      overflow: hidden;
       position: absolute;
       top: 0;
       left: 0;
@@ -36,17 +31,15 @@
   }
 
   .starwars-container {
-    // position: absolute;
-    z-index: 10;
+    position: absolute;
     width: 100vw;
-    // height: 100vh;
     top: 0;
     left: 0;
   }
 
   .starwars {
     font-size: 36px;
-    line-height: 1.2em;
+    line-height: 1;
     white-space: nowrap;
 
     @include respond-to(mobile) {
