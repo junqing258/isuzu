@@ -1,3 +1,5 @@
+@import "../../assets/scss/responsive.scss";
+
 .page {
   min-height: 100vh;
 }
@@ -6,28 +8,30 @@
   background-color: #282c34;
   .content {
     position: sticky;
+    width: 100vw;
     top: 0;
     left: 0;
-    width: 100vw;
     height: 100vh;
     overflow: hidden;
-  }
-  .bg {
-    position: absolute;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: absolute;
-
-    video {
-      object-fit: fill;
-      max-width: unset;
-      height: unset;
+    .bg {
+      // position: absolute;
+      z-index: -1;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
+
+      video {
+        object-fit: fill;
+        max-width: unset;
+        height: unset;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
     }
   }
 
@@ -35,7 +39,7 @@
     // position: absolute;
     z-index: 10;
     width: 100vw;
-    height: 100vh;
+    // height: 100vh;
     top: 0;
     left: 0;
   }
@@ -43,16 +47,12 @@
   .starwars {
     font-size: 36px;
     line-height: 1.2em;
+    white-space: nowrap;
 
-    /* &.prev {
-      transform: scale(1.4) translateY(-100%);
-      opacity: 0;
-    } */
+    @include respond-to(mobile) {
+      font-size: 26px;
+    }
   }
-}
-
-.placeholder {
-  height: 100vh;
 }
 
 .page2 {

@@ -1,0 +1,78 @@
+/**
+* 定义媒体查询的尺寸 https://cn.windicss.org/features/responsive-design.html
+**/
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+
+// 定义响应式 mixin
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media only screen and (max-width: $sm) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (min-width: ($sm + 1)) and (max-width: $md) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: ($md + 1)) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == no-mobile {
+    @media only screen and (min-width: ($sm + 1)) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile-only {
+    @media only screen and (max-width: $sm) {
+      @content;
+    }
+
+    @media only screen and (min-width: ($sm + 1)) {
+      display: none;
+    }
+  }
+
+  @if $breakpoint == desktop-only {
+    @media only screen and (min-width: ($md + 1)) {
+      @content;
+    }
+
+    @media only screen and (max-width: $md) {
+      display: none;
+    }
+  }
+}
+
+/**
+* _mixins.scss
+* 定义一个 mixin，将 px 转为 vw，可以根据基数调整
+*/
+
+@mixin px-to-vw($property, $value, $base) {
+  #{$property}: ($value / $base * 100) vw;
+}
+
+/**
+* _functions.scss
+* 定义一个函数，用于在 vw 和 px 单位之间转换
+*/
+
+@function px2vw($value, $breakpoint) {
+  $base: 750px;
+
+  @if $breakpoint == desktop {
+    $base: 1440px;
+  }
+
+  @return ($value / $base * 100) vw;
+}
