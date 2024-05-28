@@ -22,3 +22,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+
+console.log("[BUILD_TIME]", __BUILD_TIME__);
