@@ -29,20 +29,46 @@ export default function Page1() {
 
   useGSAP(
     () => {
-      gsap.to(".starwars", {
+      /* gsap.to(".starwars", {
         keyframes: {
           scale: [0.8, 1, 1.4],
           opacity: [0, 1, 0],
           translateY: ["100%", "0", "-200%"],
         },
-        stagger: 0.1,
+        stagger: .5,
+        offsetScale: .1,
+        offsetAlpha: .25,
+        duration: 1.2,
+        locked: true,
         scrollTrigger: {
           // target: document.getElementById("page1Content") as HTMLElement,
           markers: true,
-          start: "top center", // when the top of the trigger hits the center of the viewport
+          start: "top 200", // when the top of the trigger hits the center of the viewport
           scrub: true,
         },
+      }); */
+
+      function updateProgress(progress: number) {
+        console.log(progress);
+        items.forEach((item, i) => {
+          item.style.opacity = `${1.1 - Math.abs(i - progress * items.length)}`;
+          item.style.transform = `scale(${
+            1 - Math.abs(i - progress * items.length) * 0.2
+          }) translateY(${(i - progress * items.length) * 100}%)`;
+        });
+      }
+
+      const items = gsap.utils.toArray(".starwars") as HTMLElement[];
+      ScrollTrigger.create({
+        trigger: ".starwars-container",
+        start: "top 200",
+        markers: true,
+        onUpdate: (self) => {
+          updateProgress(self.progress);
+        },
       });
+
+      updateProgress(0);
 
       let panels = gsap.utils.toArray(".page") as any[];
 
@@ -89,8 +115,9 @@ export default function Page1() {
             ></source>
           </video> */}
           </div>
-
-          <div ref={list} className="list text-white">
+          <div className="h-[200px]"></div>
+          <div ref={list} className="starwars-container text-white">
+            <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>
             <p className="starwars">Vite + React + TailwindCSS</p>

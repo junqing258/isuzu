@@ -30,7 +30,7 @@ export const useRect = (ref: any) => {
         }
 
         resizeObserver.disconnect()
-        resizeObserver = null
+        // resizeObserver = null
       }
     } else {
       // Browser support, remove freely

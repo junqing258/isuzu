@@ -3,7 +3,7 @@
 }
 
 .page1 {
-  background-color: #282c34 ;
+  background-color: #282c34;
   .content {
     position: sticky;
     top: 0;
@@ -31,22 +31,23 @@
     }
   }
 
-  .list {
-    position: absolute;
+  .starwars-container {
+    // position: absolute;
     z-index: 10;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
   .starwars {
     font-size: 36px;
-    line-height: 1.5em;
+    line-height: 1.2em;
+
+    /* &.prev {
+      transform: scale(1.4) translateY(-100%);
+      opacity: 0;
+    } */
   }
 }
 
