@@ -49,13 +49,26 @@ export default function Page1() {
         onUpdate: (self) => {
           updateProgress(self.progress);
         },
+        onLeave: () => {
+          console.log("onLeave");
+          goToSection(1);
+        },
+        onEnterBack: () => {
+          console.log("onEnterBack");
+          goToSection(0);
+        },
+        onLeaveBack: () => {
+          console.log("onLeaveBack");
+          // goToSection(0);
+        },
       });
 
       let panels = gsap.utils.toArray(".page") as any[];
 
-      let index = 0;
+      let index = window.scrollY < window.innerHeight / 2 ? 0 : 1;
       function goToSection(i: any) {
-        if (i === index) return;
+        console.log("goToSection", i);
+        // if (i === index) return;
         gsap.to(window, {
           scrollTo: { y: panels[i], autoKill: false },
           onComplete: () => {
@@ -64,9 +77,8 @@ export default function Page1() {
         });
       }
 
-      ScrollTrigger.create({
+      /* ScrollTrigger.create({
         trigger: panels[1],
-        // markers: true,
         onEnter: () => {
           goToSection(1);
         },
@@ -75,11 +87,10 @@ export default function Page1() {
       ScrollTrigger.create({
         trigger: panels[0],
         start: "bottom bottom",
-        // markers: true,
         onEnterBack: (self) => {
           goToSection(0);
         },
-      });
+      }); */
     },
     { scope: wrap }
   );
@@ -96,26 +107,20 @@ export default function Page1() {
               ></source>
             </video>
           </div>
-
           <div ref={content} className="starwars-container text-white">
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
-            <p className="starwars">Vite + React + TailwindCSS</p>
+            <p className="starwars">As I Walked Out One Evening</p>
+            <p className="starwars">I'll love you, dear, I'll love you</p>
+            <p className="starwars">Till China and Africa meet,</p>
+            <p className="starwars">And the river jumps over the mountain</p>
+            <p className="starwars">And the salmon sing in the street,</p>
+            <p className="starwars">I'll love you till the ocean</p>
+            <p className="starwars">Is folded and hung up to dry</p>
+            <p className="starwars">And the seven stars go squawking</p>
+            <p className="starwars">Like geese about the sky.</p>
+            <p className="starwars">The years shall run like rabbits,</p>
+            <p className="starwars">For in my arms I hold</p>
+            <p className="starwars">The Flower of the Ages,</p>
+            <p className="starwars">And the first love of the world.</p>
           </div>
         </div>
 
